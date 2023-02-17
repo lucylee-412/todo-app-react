@@ -2,5 +2,8 @@
 
 UI was made using React.js and MUI.
 
-`git clone https://github.com/lucylee-412/todo-app-react.git`
+`git clone https://github.com/lucylee-412/todo-app-react.git`  
+
+`cd todo-app-react`  
+
 `npm install`

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button } from '@mui/material';
 
 import AddTask from './AddTask';
+import Tasks from './Tasks';
 
 const App = () => {
   const [open, setOpen] = useState(false);
@@ -26,6 +27,7 @@ const App = () => {
         open={open}
         handleClose={handleClose}
       />
+      <Tasks />
     </>
   );
 }

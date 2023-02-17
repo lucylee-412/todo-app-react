@@ -13,10 +13,12 @@ function AddTask({ open, handleClose }) {
   });
 
   // ADD Task form fields
+  const [description, setDescription] = useState('');
+  const [priority, setPriority] = useState('medium');
   const [task, setTask] = useState({
-    description: '',
-    status: 'in-progress',
-    priority: 'medium'
+    description: description,
+    status: "in-progress",
+    priority: priority
   })
   const [submitted, setSubmitted] = useState(false);
 
@@ -30,18 +32,9 @@ function AddTask({ open, handleClose }) {
     }
   }, [open]);
 
-  // Prepare to POST using form input data
-  const handleChange = (e) => {
-    setTask(prevState => {
-        return {...task, [e.target.name]: e.target.value}
-    })
-}
-
   // POST request on form submission
-  const onSubmit = (e) => {
-    e.preventDefault();
-
-    axios.post('http://localhost:3000/tasks', task)
+  const onSubmit = async (e) => {
+    await axios.post('http://localhost:3000/tasks', task)
       .then(function (response) {
         console.log(response);
       })
@@ -69,8 +62,15 @@ function AddTask({ open, handleClose }) {
               <form id="taskForm" onSubmit={handleSubmit(onSubmit)}>
                 <TextField
                   required
-                  label="Task Description"
-                  onChange={handleChange}
+                  label="description"
+                  name="description"
+                  onChange={e => {
+                    setDescription(e.target.value);
+                    console.log(task);
+                    setTask(prevState => {
+                      return {...task, [e.target.name]: e.target.value}
+                    })
+                  }}
                 />
                 
                 <br /><br />
@@ -80,12 +80,17 @@ function AddTask({ open, handleClose }) {
                     Priority
                   </InputLabel>
                   <NativeSelect
-                    defaultValue={30}
+                    defaultValue={'medium'}
                     inputProps={{
-                      name: 'age',
+                      name: 'priority',
                       id: 'uncontrolled-native',
                     }}
-                    onChange={handleChange}
+                    onChange={e => {
+                      setPriority(e.target.value);
+                      setTask(prevState => {
+                        return {...task, [e.target.name]: e.target.value}
+                      })
+                    }}
                   >
                     <option value={'low'}>Low</option>
                     <option value={'medium'}>Medium</option>
@@ -99,7 +104,7 @@ function AddTask({ open, handleClose }) {
             <Button
               style={{ marginTop: '1rem' }}
               size="small"
-              form="brandForm"
+              form="taskForm"
               type="submit"
               variant="outlined"
               color="primary"

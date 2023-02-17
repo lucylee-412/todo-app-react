@@ -62,7 +62,7 @@ function AddTask({ open, handleClose }) {
               <form id="taskForm" onSubmit={handleSubmit(onSubmit)}>
                 <TextField
                   required
-                  label="description"
+                  label="Description"
                   name="description"
                   onChange={e => {
                     setDescription(e.target.value);

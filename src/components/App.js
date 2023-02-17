@@ -21,7 +21,7 @@ const App = () => {
         }}
         onClick={handleOpen}
       >
-        ADD BRAND          
+        ADD TASK      
       </Button>
       <AddTask 
         open={open}

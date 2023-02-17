@@ -37,6 +37,7 @@ function AddTask({ open, handleClose }) {
     await axios.post('http://localhost:3000/tasks', task)
       .then(function (response) {
         console.log(response);
+        window.location = "/";
       })
       .catch(function (error) {
         console.log(error);

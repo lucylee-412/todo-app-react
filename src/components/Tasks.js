@@ -81,6 +81,18 @@ const headCells = [
     numeric: false,
     disablePadding: false,
     label: 'Priority',
+  },
+  {
+    id: 'edit',
+    numeric: false,
+    disablePadding: false,
+    label: '',
+  },
+  {
+    id: 'delete',
+    numeric: false,
+    disablePadding: false,
+    label: '',
   }
 ];
 

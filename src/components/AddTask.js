@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import axios from 'axios';
 
 import { Box, Button, Dialog, FormControl, InputLabel, NativeSelect, TextField } from '@mui/material';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
-import axios from 'axios';
 
 function AddTask({ open, handleClose }) {
   const { register, handleSubmit, formState: { errors } } = useForm({
@@ -65,6 +65,7 @@ function AddTask({ open, handleClose }) {
                   required
                   label="Description"
                   name="description"
+                  sx={{ marginTop: 1 }}
                   onChange={e => {
                     setDescription(e.target.value);
                     console.log(task);
